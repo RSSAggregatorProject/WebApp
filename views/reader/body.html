@@ -4,17 +4,22 @@
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-collapse collapse sidebar-navbar-collapse">
           <ul class="nav navbar-nav">
-            <li my-label category="defaultCategories[0]" selected-category="selectedCategory" class="active"><a><i class="glyphicon glyphicon-star" style="margin-right: 10px;"></i>Starred items<span class="badge pull-right">1,118</span></a></li>
-            <li my-label category="defaultCategories[1]" selected-category="selectedCategory"><a><i class="glyphicon glyphicon-th-list" style="margin-right: 10px;"></i>All items<span class="badge pull-right">1,118</span></a></li>
-            <li my-label category="category" selected-category="selectedCategory" ng-repeat="category in categories"><a>{{category.name}}<span class="badge pull-right">1,118</span></a></li>
+            <li class="active"><a my-label category="defaultCategories[0]" class="category-link"><i class="glyphicon glyphicon-star" style="margin-right: 10px;"></i>Starred items<span class="badge pull-right">1,118</span></a></li>
+            <li><a my-label category="defaultCategories[1]" class="category-link"><i class="glyphicon glyphicon-th-list" style="margin-right: 10px;"></i>All items<span class="badge pull-right">1,118</span></a></li>
+            <li ng-repeat="category in categories">
+              <a my-label category="category" class="category-link" ng-click="getFeeds(category)">{{category.name}}<span class="badge pull-right">1,118</span></a>
+              <a class="feed-link" my-feed-link feed="feed" ng-repeat="feed in feeds" ng-if="category == selectedCategory"><p>{{feed.name}}</p></a>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
-    <button type="button" class="btn btn-warning btn-block">Add a new Feed<i class="glyphicon glyphicon-plus" style="margin-left: 10px;"></i></button>
+    <button type="button" class="btn btn-warning btn-block" ng-click="openNewCategoryModal()">Define new Category<i class="glyphicon glyphicon-tag" style="margin-left: 10px;"></i></button>
+    <button type="button" class="btn btn-warning btn-block" ng-click="openNewFeedModal()">Add new Feed<i class="glyphicon glyphicon-plus" style="margin-left: 10px;"></i></button>
   </div>
   <div class="col-lg-9 content-layout">
-    <h2>{{selectedCategory.name}}</h2>
+    <h2 ng-if="!selectedFeed.name">{{selectedCategory.name}}</h2>
+    <h2 ng-if="selectedFeed.name">{{selectedCategory.name}} - {{selectedFeed.name}}</h2>
     <hr>
     <button class="btn btn-warning pull-left">Refresh<i class="glyphicon glyphicon-refresh" style="margin-left: 10px;"></i></button>
     <div class="col-lg-12 article-list">
@@ -42,3 +47,40 @@
     </div>
   </div>
 </div>
+
+<script type="text/ng-template" id="newCategoryModal.html">
+  <div class="modal-header">
+      <h3 class="modal-title" id="modal-title">Define your new Category</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <form ng-submit="addCategory()">
+      <div class="form-group">
+        <label for="category-name" class="control-label">Name:</label>
+        <input type="text" class="form-control" id="category-name" ng-model="newItem.name">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-default" type="button" ng-click="$scope.cancelModal()">Cancel</button>
+      <button class="btn btn-warning" type="button" ng-click="$scope.createItem(newItem)">Create</button>
+  </div>
+</script>
+
+<script type="text/ng-template" id="newFeedModal.html">
+  <div class="modal-header">
+      <h3 class="modal-title" id="modal-title">Define a new Feed</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <form ng-submit="addFeed()">
+      <div class="form-group">
+        <label for="feed-name" class="control-label">Name:</label>
+        <input type="text" class="form-control" id="feed-name" ng-model="newItem.name">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-default" type="button" ng-click="$scope.cancelModal()">Cancel</button>
+      <button class="btn btn-warning" type="button" ng-click="$scope.createItem(newItem)">Create</button>
+  </div>
+</script>

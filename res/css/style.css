@@ -7,6 +7,11 @@ body {
  height: 100%;
 }
 
+.navbar.navbar-fixed-top {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 .general-container {
   padding:0px;
   height:100%
@@ -94,8 +99,8 @@ body {
 }
 
 .content-layout {
-  margin-top: 20px;
   margin-right: auto;
+  height: 100%;
 }
 
 .reader-sidebar {
@@ -113,6 +118,8 @@ body {
   .sidebar-nav {
     margin-top: 10px;
     margin-bottom: 70px;
+    overflow-y: scroll;
+    height: 70%;
   }
 
   .sidebar-nav .navbar-default {
@@ -133,8 +140,27 @@ body {
     border: 0.5px solid #BDBDBD;
   }
 
-  .sidebar-nav .navbar li:hover {
+  .sidebar-nav .navbar li:hover a.category-link:hover {
     background-color: #ffc266;
+  }
+
+  .feed-link {
+    border-bottom: 1px solid #bbb;
+  }
+
+  .feed-link p {
+    margin-left: 20px;
+  }
+
+  .sidebar-nav .navbar li a.feed-link.active,
+  .sidebar-nav .navbar li a.feed-link.active:hover {
+    background-color: #aaa;
+    color: white;
+  }
+
+  .sidebar-nav .navbar li a.feed-link:hover {
+    background-color: #ccc;
+    color: white;
   }
 
   .sidebar-nav .navbar li a {
@@ -143,12 +169,12 @@ body {
     color: black;
   }
 
-  .sidebar-nav .navbar li.active a {
+  .sidebar-nav .navbar li.active a.category-link {
     background-color: #FF9800;
     color: white;
   }
 
-  .sidebar-nav .navbar li.active a:hover {
+  .sidebar-nav .navbar li.active a.category-link:hover {
     background-color: #FF9800;
     color: white;
   }
@@ -157,6 +183,8 @@ body {
     margin-top: 20px;
     padding-right: 0px;
     padding-left: 0px;
+    overflow-y: scroll;
+    height: 75%;
   }
 
   .article-layout {

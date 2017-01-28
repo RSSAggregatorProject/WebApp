@@ -4,8 +4,10 @@ angular
     'ui.bootstrap',
     'ui.bootstrap.tpls'
   ])
- .config(['$stateProvider', '$urlRouterProvider', function($stateProvider,
-     $urlRouterProvider) {
+ .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider,
+     $urlRouterProvider, $httpProvider) {
+       $httpProvider.defaults.useXDomain = true;
+
        $urlRouterProvider.otherwise('login');
        $stateProvider
          .state('login', {
