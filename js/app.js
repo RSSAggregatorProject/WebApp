@@ -15,17 +15,17 @@ angular
            url: '/login',
            views: {
              // Main template
-             '': { templateUrl: '../views/login/login.html' },
+             '': { templateUrl: 'views/login/login.html' },
 
              // Header
              'header@login': {
-               templateUrl: '../views/header.html',
+               templateUrl: 'views/header.html',
                controller: 'HeaderController'
              },
 
              // Login form
              'form@login': {
-               templateUrl: '../views/login/form.html',
+               templateUrl: 'views/login/form.html',
                controller: 'LoginController'
              },
            },
@@ -36,23 +36,23 @@ angular
          })
          .state('forbidden-authentication', {
            url: '/forbidden-authentication',
-           templateUrl: '../views/forbidden-authentification.html'
+           templateUrl: 'views/forbidden-authentification.html'
          })
          .state('reader', {
            url: '/reader',
            views: {
              // Main template
-             '': { templateUrl: '../views/reader/reader.html'},
+             '': { templateUrl: 'views/reader/reader.html'},
 
              // Header
              'header@reader': {
-               templateUrl: '../views/header.html',
+               templateUrl: 'views/header.html',
                controller: 'HeaderController'
              },
 
              // Login form
              'body@reader': {
-               templateUrl: '../views/reader/body.html',
+               templateUrl: 'views/reader/body.html',
                controller: 'ReaderController'
              },
          },

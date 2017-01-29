@@ -186,6 +186,13 @@ body {
     color: black;
   }
 
+  .my-panel {
+    cursor: pointer;
+  }
+  .my-panel-body {
+    cursor: auto;
+  }
+
   .sidebar-nav .navbar li.active a.category-link {
     background-color: #FF9800;
     color: white;
