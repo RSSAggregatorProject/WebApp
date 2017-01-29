@@ -8,6 +8,24 @@ angular
     $scope.radioModel = 'SignUp';
     $scope.user = {};
 
+    $scope.errorAlert = {
+      msg: "Something unexpected happened, please try again!",
+      active: false
+    };
+
+    // Alert's functions
+    $scope.addAlert = function(msg) {
+      $scope.errorAlert.active = true;
+      if (msg) {
+        $scope.errorAlert.msg = msg;
+      }
+    };
+
+    $scope.closeAlert = function() {
+      $scope.errorAlert.active = false;
+    };
+    // End Alert's functions
+
 
     $scope.login = function() {
       AuthService.login($scope.user.email, $scope.user.password)
@@ -16,6 +34,7 @@ angular
           console.log('Current user:', currentUser);
           $state.go('reader');
         }, function(err) {
+          $scope.addAlert('Wrong combination email/password. Please ensure that your account truly exists!');
           console.log('Error while loging in', err);
         })
     };
@@ -27,6 +46,7 @@ angular
           console.log('Current user:', currentUser);
           $state.go('reader');
         }, function(err) {
+          $scope.addAlert('Sorry, we haven\'t been able to sign you up! This email address has already been used...');
           console.log('Error while signing up', err);
         })
     }

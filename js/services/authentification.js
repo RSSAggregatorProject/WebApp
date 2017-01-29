@@ -6,7 +6,7 @@ angular
         // delete $http.defaults.headers.common['X-Requested-With'];
         var req = {
          method: 'POST',
-         url: 'http://dreamteamrssfeader.ddns.net:8080/rssserver/auth/',
+         url: 'http://dreamteamrssfeader.ddns.net:8080/rssserver/api/auth/',
          headers: {
            'Content-Type': 'application/json'
          },
@@ -14,7 +14,7 @@ angular
            email: email,
            password: password
          })
-        }
+       };
 
         $http(req).then(function (res) {
           $window.sessionStorage.setItem("currentUser", angular.toJson({
@@ -35,7 +35,7 @@ angular
 
         var req = {
          method: 'POST',
-         url: 'http://dreamteamrssfeader.ddns.net:8080/rssserver/users/',
+         url: 'http://dreamteamrssfeader.ddns.net:8080/rssserver/api/users/',
          headers: {
            'Content-Type': 'application/json'
          },
@@ -43,7 +43,7 @@ angular
            email: email,
            password: password
          })
-        }
+       };
 
         $http(req).then(function (res) {
           login(email, password).then(function() {

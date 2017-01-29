@@ -1,9 +1,5 @@
-<!-- Alert for login failure -->
-<!-- <div id="alert-fail-login" class="alert app-alerts alert-danger" role="alert" hidden="true"><a href="#" class="close" dismiss-alert="alert-fail-login" aria-label="close">&times;</a>
-  <strong>Oh snap</strong>, the login in <strong>failed</strong>... Please <strong>check your email address and password</strong> before trying again!
-</div> -->
+<div uib-alert ng-class="'alert-danger'" class="my-alert" ng-model="errorAlert" close="closeAlert()" ng-if="errorAlert.active">{{errorAlert.msg}}</div>
 
-<!-- Form -->
 <div class="col-lg-6 col-lg-offset-3 grp-button-login">
   <div class="col-lg-12 btn-group btn-group-lg" role="group">
     <label class="btn btn-default col-lg-6 radio-button-login" ng-model="radioModel" uib-btn-radio="'SignUp'">Sign Up</label>
